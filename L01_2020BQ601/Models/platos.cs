@@ -10,6 +10,6 @@ namespace L01_2020BQ601.Models
 
         public String nombrePlato { get; set; }
 
-        public decimal precio { get;}
+        public decimal precio { get; set; }
     }
 }

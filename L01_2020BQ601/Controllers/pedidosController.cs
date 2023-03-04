@@ -84,7 +84,7 @@ namespace L01_2020BQ601.Controllers
             [HttpDelete]
             [Route("eliminar/{id}")]
 
-            public IActionResult EliminarEquipo(int id)
+            public IActionResult EliminarPedido(int id)
             {
                 pedidos? equipo = (from e in _restauranteContexto.pedidos
                                    where e.pedidoId == id
