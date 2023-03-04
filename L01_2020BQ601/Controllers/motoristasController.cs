@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace L01_2020BQ601.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("motoristas")]
     [ApiController]
     public class motoristasController : ControllerBase
     {

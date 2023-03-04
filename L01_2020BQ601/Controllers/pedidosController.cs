@@ -99,24 +99,42 @@ namespace L01_2020BQ601.Controllers
                 return Ok(equipo);
             }
 
-            /*
-            [HttpGet]
-            [Route("Find/{filtro}")]
 
-            public IActionResult FindByDescription(string filtro)
+            [HttpGet]
+            [Route("GetByIdCliente/{id}")]
+
+            public IActionResult GetByIdCliente(int id)
             {
 
-                equipos? equipo = (from e in _equiposContexto.equipos
-                                   where e.descripcion.Contains(filtro)
+                pedidos? pedido = (from e in _restauranteContexto.pedidos
+                                   where e.clienteId == id
                                    select e).FirstOrDefault();
 
-                if (equipo == null)
+                if (pedido == null)
                 {
                     return NotFound();
                 }
+                return Ok(pedido);
 
-                return Ok(equipo);
             }
-            */
-        }
+
+            [HttpGet]
+            [Route("GetByIdMotorista/{id}")]
+
+            public IActionResult GetByIdMotorista(int id)
+            {
+
+                pedidos? pedido = (from e in _restauranteContexto.pedidos
+                                   where e.motoristaId == id
+                                   select e).FirstOrDefault();
+
+                if (pedido == null)
+                {
+                    return NotFound();
+                }
+                return Ok(pedido);
+
+            }
+
+    }
 }

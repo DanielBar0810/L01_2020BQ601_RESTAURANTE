@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace L01_2020BQ601.Controllers
 {
-    [Route("pedidos")]
+    [Route("platos")]
     [ApiController]
     public class platosController : ControllerBase
     {
@@ -91,6 +91,24 @@ namespace L01_2020BQ601.Controllers
             _restauranteContexto.platos.Attach(plato);
             _restauranteContexto.platos.Remove(plato);
             _restauranteContexto.SaveChanges();
+
+            return Ok(plato);
+        }
+
+        [HttpGet]
+        [Route("Find/{filtro}")]
+
+        public IActionResult FindByDescription(string filtro)
+        {
+
+            platos? plato = (from e in _restauranteContexto.platos
+                               where e.nombrePlato.Contains(filtro)
+                               select e).FirstOrDefault();
+
+            if (plato == null)
+            {
+                return NotFound();
+            }
 
             return Ok(plato);
         }
